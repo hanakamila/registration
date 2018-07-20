@@ -11,10 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+// Route::get('/', function () {
+//     return view('index');
+// });
 
-Route::get('/edit', function () {
-    return view('edit');
-});
+Route::get('/', 'registrationController@index');
+Route::post('/registrations', 'registrationController@store');

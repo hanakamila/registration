@@ -3,38 +3,38 @@
 @section('content')
 	<div class="container-contact100">
 		<div class="wrap-contact100">
-			<form class="contact100-form validate-form">
+			<form class="contact100-form validate-form" method="post" action="{{action('registrationController@edit', $id)}}" enctype="multipart/form-data>
 				<span class="contact100-form-title">
 					Edit Data
 				</span>
 
 				<div class="wrap-input100 validate-input" data-validate="Name is required">
-					<input class="input100" id="name" type="text" name="name" placeholder="Name">
+					<input class="input100" id="name" type="text" name="name" placeholder="Name" value="{{$registration['name']}}">
 					<label class="label-input100" for="name">
 						<span class="fa fa-user"></span>
 					</label>
 				</div>
 
 				<div class="wrap-input100 validate-input" data-validate="Birthdate is required">
-					<input class="input100" id="birthdate" type="date" max="2006-12-31" name="birthdate">
+					<input class="input100" id="birthdate" type="date" max="2006-12-31" name="birthdate" value="{{$registration['birthdate']}}>
 					<label class="label-input100" for="birthdate">
 						<li class="fa fa-birthday-cake"></li>
 					</label>
 				</div>
 
 				<div class="wrap-input100 validate-input" data-validate = "Address is required">
-					<textarea class="input100" name="address" placeholder="Address"></textarea>
+					<textarea class="input100" name="address" placeholder="Address" value="{{$registration['address']}}"></textarea>
 				</div>
 
 				<div class="wrap-input100 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
-					<input class="input100" id="email" type="text" name="email" placeholder="Email">
+					<input class="input100" id="email" type="text" name="email" placeholder="Email" value="{{$registration['email']}}">
 					<label class="label-input100" for="email">
 						<span class="fa fa-envelope"></span>
 					</label>
 				</div>
 
 				<div class="wrap-input100 validate-input" data-validate = "Photo is required">
-					<input class="input10" id="photo" type="file" name="photo">
+					<input class="input10" id="photo" type="file" name="photo" value="{{$registration['photo']}}">
 					<label class="label-input100" for="phone">
 						<span class="fa fa-photo"></span>
 					</label>

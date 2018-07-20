@@ -3,10 +3,16 @@
 @section('content')
 	<div class="container-contact100">
 		<div class="wrap-contact100">
-			<form class="contact100-form validate-form">
+			<form class="contact100-form validate-form" method="post" action="/registrations" enctype="multipart/form-data"> @csrf
 				<span class="contact100-form-title">
 					Registration Form
 				</span>
+
+				 @if (\Session::has('success'))
+			      <div class="alert alert-success">
+			        <p>{{ \Session::get('success') }}</p>
+			      </div><br/>
+			     @endif
 
 				<div class="wrap-input100 validate-input" data-validate="Name is required">
 					<input class="input100" id="name" type="text" name="name" placeholder="Name">
@@ -62,39 +68,19 @@
 				<th>Email</th>
 				<th>Photo</th>
 				<th>Action</th>
+				@foreach($registrations as $registration)
 				<tr>
-					<td>ji</td>
-					<td>ji</td>
-					<td>ji</td>
-					<td>ji</td>
-					<td>ji</td>
+					<td>{{$registration['name']}}</td>
+					<td>{{$registration['birthdate']}}</td>
+					<td>{{$registration['address']}}</td>
+					<td>{{$registration['email']}}</td>
+					<td>{{$registration['photo']}}</td>
 					<td>
                     	<a class="btn btn-info" href="">Edit</a>
                     	<a class="btn btn-danger" href="">Delete</a>
 					</td>
 				</tr>
-				<tr>
-					<td>ji</td>
-					<td>ji</td>
-					<td>ji</td>
-					<td>ji</td>
-					<td>ji</td>
-					<td>
-                    	<a class="btn btn-info" href="">Edit</a>
-                    	<a class="btn btn-danger" href="">Delete</a>
-					</td>
-				</tr>
-				<tr>
-					<td>ji</td>
-					<td>ji</td>
-					<td>ji</td>
-					<td>ji</td>
-					<td>ji</td>
-					<td>
-                    	<a class="btn btn-info" href="">Edit</a>
-                    	<a class="btn btn-danger" href="">Delete</a>
-					</td>
-				</tr>
+				@endforeach
 			</table>
 		</div>
 	</div>

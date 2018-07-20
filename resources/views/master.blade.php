@@ -64,5 +64,11 @@
   gtag('config', 'UA-23581568-13');
 </script>
 
+<script type="text/javascript">  
+        $('#birthdate').datepicker({   
+            format: 'dd-mm-yyyy'  
+         });  
+</script>
+
 </body>
 </html>
