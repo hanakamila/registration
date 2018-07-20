@@ -5,7 +5,7 @@
 		<div class="wrap-contact100">
 			<form class="contact100-form validate-form">
 				<span class="contact100-form-title">
-					Registration Form
+					Edit Data
 				</span>
 
 				<div class="wrap-input100 validate-input" data-validate="Name is required">
@@ -49,53 +49,6 @@
 					</div>
 				</div>
 			</form>
-
-	<br><hr class="style-two"><br>
-
-			<span class="contact100-form-title">
-					Data
-			</span>
-			<table class="table table-striped table-bordered table-hover table-condensed" >
-				<th>Name</th>
-				<th>Birthdate</th>
-				<th>Address</th>
-				<th>Email</th>
-				<th>Photo</th>
-				<th>Action</th>
-				<tr>
-					<td>ji</td>
-					<td>ji</td>
-					<td>ji</td>
-					<td>ji</td>
-					<td>ji</td>
-					<td>
-                    	<a class="btn btn-info" href="">Edit</a>
-                    	<a class="btn btn-danger" href="">Delete</a>
-					</td>
-				</tr>
-				<tr>
-					<td>ji</td>
-					<td>ji</td>
-					<td>ji</td>
-					<td>ji</td>
-					<td>ji</td>
-					<td>
-                    	<a class="btn btn-info" href="">Edit</a>
-                    	<a class="btn btn-danger" href="">Delete</a>
-					</td>
-				</tr>
-				<tr>
-					<td>ji</td>
-					<td>ji</td>
-					<td>ji</td>
-					<td>ji</td>
-					<td>ji</td>
-					<td>
-                    	<a class="btn btn-info" href="">Edit</a>
-                    	<a class="btn btn-danger" href="">Delete</a>
-					</td>
-				</tr>
-			</table>
 		</div>
 	</div>
 
