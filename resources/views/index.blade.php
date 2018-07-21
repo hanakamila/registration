@@ -8,13 +8,13 @@
 					Registration Form
 				</span>
 
-				 @if (\Session::has('success'))
+				@if (\Session::has('success'))
 			      <div class="alert alert-success">
 			        <p>{{ \Session::get('success') }}</p>
 			      </div><br/>
-			     @endif
+			    @endif
 
-			     @if (count($errors) > 0)
+			    @if (count($errors) > 0)
 		            <div class="alert alert-danger">
 		                <strong>Whoops!</strong> There were some problems with your input.
 		                <ul>
@@ -51,7 +51,7 @@
 				</div>
 
 				<div class="wrap-input100 validate-input" data-validate = "Photo is required">
-					<input class="input10" id="photo" type="file" name="photo" accept="image/jpg,jpeg">
+					<input class="input10" id="photo" type="file" name="photo" {{-- accept="image/.jpg, .jpeg" --}}>
 					<label class="label-input100" for="phone">
 						<span class="fa fa-photo"></span>
 					</label>
@@ -85,17 +85,19 @@
 					<td>{{$registration['birthdate']}}</td>
 					<td>{{$registration['address']}}</td>
 					<td>{{$registration['email']}}</td>
-					<td>
-						{{$registration['photo']}}
+					<td>{{$registration['photo']}}
 					</td>
 					<td>
-                    	<a class="btn btn-info" href="">Edit</a>
-                    	<a class="btn btn-danger" href="">Delete</a>
+                    	<a class="btn btn-info btn-sm" href="">Edit</a>
+                    	<form class="delete" action="{{ url('delete',$registration->id) }}" method="POST">
+					        <input type="hidden" name="_method" value="DELETE">
+					        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+					        <input type="submit" class="btn btn-danger btn-sm" value="Delete">
+					    </form>
 					</td>
 				</tr>
 				@endforeach
 			</table>
 		</div>
 	</div>
-
 @endsection

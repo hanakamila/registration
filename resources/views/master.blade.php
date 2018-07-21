@@ -66,8 +66,14 @@
 
 <script type="text/javascript">  
         $('#birthdate').datepicker({   
-            format: 'dd-mm-yyyy'  
+            format: 'yyy-mm-dd'  
          });  
+</script>
+
+<script>
+    $(".delete").on("submit", function(){
+        return confirm("Do you want to delete this item?");
+    });
 </script>
 
 </body>

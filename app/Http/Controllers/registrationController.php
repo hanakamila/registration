@@ -35,25 +35,25 @@ class registrationController extends Controller
      */
     public function store(Request $request)
     {
-
-        request()->validate([
-
+        if (request()->validate([
             'photo' => 'required|image|mimes:jpg,jpeg|max:20480',
+        ]) == TRUE) {
+            
+            $file = $request->file('photo');
+            $name=time().$file->getClientOriginalName();
+            $file->move(public_path().'/images/', $name);
+            $registration= new \App\Registration;
+            $registration->name=$request->post('name');
+            $registration->birthdate=$request->post('birthdate');
+            $registration->address=$request->post('address');
+            $registration->email=$request->post('email');
+            $registration->photo=$name;
+            $registration->save();
 
-        ]);
-        
-        $file = $request->file('photo');
-        $name=time().$file->getClientOriginalName();
-        $file->move(public_path().'/images/', $name);
-        $registration= new \App\Registration;
-        $registration->name=$request->post('name');
-        $registration->birthdate=$request->post('birthdate');
-        $registration->address=$request->post('address');
-        $registration->email=$request->post('email');
-        $registration->photo=$name;
-        $registration->save();
-
-        return redirect('')->with('success', 'Information has been added');
+            return redirect('')->with('success', 'Information has been added');
+        }else{
+            return false;
+        }
     }
 
     /**
@@ -99,6 +99,8 @@ class registrationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $registration = \App\Registration::find($id);
+        $registration->delete();
+        return redirect('')->with('success','Information has been  deleted');
     }
 }
