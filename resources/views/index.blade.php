@@ -15,7 +15,7 @@
 			     @endif
 
 				<div class="wrap-input100 validate-input" data-validate="Name is required">
-					<input class="input100" id="name" type="text" name="name" placeholder="Name">
+					<input class="input100" id="name" type="text" name="name" placeholder="Name" pattern="[A-Za-z]" title="Only use letters (A-Z/a-z)">
 					<label class="label-input100" for="name">
 						<span class="fa fa-user"></span>
 					</label>

@@ -35,14 +35,17 @@ class registrationController extends Controller
      */
     public function store(Request $request)
     {
+
         if($request->hasfile('photo'))
          {
             $file = $request->file('photo');
             $name=time().$file->getClientOriginalName();
             $file->move(public_path().'/images/', $name);
          }
+
         $registration= new \App\Registration;
         $registration->name=$request->post('name');
+
         // $birthdate=date_create($request->post('birthdate'));
         // $format = date_format($birthdate,"Y-m-d");
         // $registration->birthdate = strtotime($format);
