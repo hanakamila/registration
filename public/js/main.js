@@ -34,11 +34,6 @@
             }
         }
 
-        // else if($(input).attr('name') == 'name') {
-        //     if($(input).val().trim().match(/^([a-zA-Z]+)/) == null) {
-        //         return false;
-        //     }
-
         else {
             if($(input).val().trim() == ''){
                 return false;

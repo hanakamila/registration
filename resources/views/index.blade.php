@@ -14,8 +14,19 @@
 			      </div><br/>
 			     @endif
 
+			     @if (count($errors) > 0)
+		            <div class="alert alert-danger">
+		                <strong>Whoops!</strong> There were some problems with your input.
+		                <ul>
+		                    @foreach ($errors->all() as $error)
+		                        <li>{{ $error }}</li>
+		                    @endforeach
+		                </ul>
+		            </div>
+		        @endif
+
 				<div class="wrap-input100 validate-input" data-validate="Name is required">
-					<input class="input100" id="name" type="text" name="name" placeholder="Name" pattern="[A-Za-z]" title="Only use letters (A-Z/a-z)">
+					<input class="input100" id="name" type="text" name="name" placeholder="Name" pattern="[A-Za-z]{1,100}" title="Only use letters">
 					<label class="label-input100" for="name">
 						<span class="fa fa-user"></span>
 					</label>
@@ -40,7 +51,7 @@
 				</div>
 
 				<div class="wrap-input100 validate-input" data-validate = "Photo is required">
-					<input class="input10" id="photo" type="file" name="photo">
+					<input class="input10" id="photo" type="file" name="photo" accept="image/jpg,jpeg">
 					<label class="label-input100" for="phone">
 						<span class="fa fa-photo"></span>
 					</label>
@@ -74,7 +85,9 @@
 					<td>{{$registration['birthdate']}}</td>
 					<td>{{$registration['address']}}</td>
 					<td>{{$registration['email']}}</td>
-					<td>{{$registration['photo']}}</td>
+					<td>
+						{{$registration['photo']}}
+					</td>
 					<td>
                     	<a class="btn btn-info" href="">Edit</a>
                     	<a class="btn btn-danger" href="">Delete</a>

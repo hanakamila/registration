@@ -36,26 +36,24 @@ class registrationController extends Controller
     public function store(Request $request)
     {
 
-        if($request->hasfile('photo'))
-         {
-            $file = $request->file('photo');
-            $name=time().$file->getClientOriginalName();
-            $file->move(public_path().'/images/', $name);
-         }
+        request()->validate([
 
+            'photo' => 'required|image|mimes:jpg,jpeg|max:20480',
+
+        ]);
+        
+        $file = $request->file('photo');
+        $name=time().$file->getClientOriginalName();
+        $file->move(public_path().'/images/', $name);
         $registration= new \App\Registration;
         $registration->name=$request->post('name');
-
-        // $birthdate=date_create($request->post('birthdate'));
-        // $format = date_format($birthdate,"Y-m-d");
-        // $registration->birthdate = strtotime($format);
         $registration->birthdate=$request->post('birthdate');
         $registration->address=$request->post('address');
         $registration->email=$request->post('email');
         $registration->photo=$name;
         $registration->save();
 
-         return redirect('')->with('success', 'Information has been added');
+        return redirect('')->with('success', 'Information has been added');
     }
 
     /**
