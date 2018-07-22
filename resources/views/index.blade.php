@@ -80,22 +80,22 @@
 				<th>Photo</th>
 				<th>Action</th>
 				@foreach($registrations as $registration)
-				<tr>
-					<td>{{$registration['name']}}</td>
-					<td>{{$registration['birthdate']}}</td>
-					<td>{{$registration['address']}}</td>
-					<td>{{$registration['email']}}</td>
-					<td>{{$registration['photo']}}
-					</td>
-					<td>
-                    	<a class="btn btn-info btn-sm" href="">Edit</a>
-                    	<form class="delete" action="{{ url('delete',$registration->id) }}" method="POST">
-					        <input type="hidden" name="_method" value="DELETE">
-					        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
-					        <input type="submit" class="btn btn-danger btn-sm" value="Delete">
-					    </form>
-					</td>
-				</tr>
+					<tr>
+						<td>{{$registration['name']}}</td>
+						<td>{{$registration['birthdate']}}</td>
+						<td>{{$registration['address']}}</td>
+						<td>{{$registration['email']}}</td>
+						<td>{{$registration['photo']}}
+						</td>
+						<td>
+	                    	<a class="btn btn-info btn-sm" href="">Edit</a>
+	                    	<form class="delete" action="{{ url('delete',$registration->id) }}" method="POST">
+						        <input type="hidden" name="_method" value="DELETE">
+						        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+						        <input type="submit" class="btn btn-danger btn-sm" value="Delete">
+						    </form>
+						</td>
+					</tr>
 				@endforeach
 			</table>
 		</div>

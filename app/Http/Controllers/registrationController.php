@@ -41,6 +41,17 @@ class registrationController extends Controller
             
             $file = $request->file('photo');
             $name=time().$file->getClientOriginalName();
+
+            // $fileName1 = $imageName . "-600x600";
+            // $fileName2 = $imageName . "-240x240";
+            // $directory = public_path('/image/');
+            // $imageUrl = $directory.$fileName;
+            // Image::make($file)->resize(240, 240)->save($imageUrl);
+            // Image::make($file)->resize(600, 600)->save($imageUrl);
+            // $user->image = $fileName;
+
+
+
             $file->move(public_path().'/images/', $name);
             $registration= new \App\Registration;
             $registration->name=$request->post('name');
