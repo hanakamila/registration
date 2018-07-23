@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Image;
 
 class registrationController extends Controller
 {
@@ -38,27 +39,20 @@ class registrationController extends Controller
         if (request()->validate([
             'photo' => 'required|image|mimes:jpg,jpeg|max:20480',
         ]) == TRUE) {
-            
+
             $file = $request->file('photo');
             $name=time().$file->getClientOriginalName();
 
-            // $fileName1 = $imageName . "-600x600";
-            // $fileName2 = $imageName . "-240x240";
-            // $directory = public_path('/image/');
-            // $imageUrl = $directory.$fileName;
-            // Image::make($file)->resize(240, 240)->save($imageUrl);
-            // Image::make($file)->resize(600, 600)->save($imageUrl);
-            // $user->image = $fileName;
+            $fileName = "-600x600" . $name;
+            Image::make($file)->resize(600, 600);
+            $file->move(public_path().'/images/', $fileName);
 
-
-
-            $file->move(public_path().'/images/', $name);
             $registration= new \App\Registration;
             $registration->name=$request->post('name');
             $registration->birthdate=$request->post('birthdate');
             $registration->address=$request->post('address');
             $registration->email=$request->post('email');
-            $registration->photo=$name;
+            $registration->photo=$fileName;
             $registration->save();
 
             return redirect('')->with('success', 'Information has been added');
