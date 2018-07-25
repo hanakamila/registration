@@ -16,5 +16,4 @@
 // });
 
 Route::get('/', 'registrationController@index');
-Route::post('/registrations', 'registrationController@store');
-Route::delete('delete/{id}', 'registrationController@destroy');
+Route::resource('registration', 'registrationController');

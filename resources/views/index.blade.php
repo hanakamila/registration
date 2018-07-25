@@ -3,7 +3,7 @@
 @section('content')
 	<div class="container-contact100">
 		<div class="wrap-contact100">
-			<form class="contact100-form validate-form" method="post" action="/registrations" enctype="multipart/form-data"> @csrf
+			<form class="contact100-form validate-form" method="post" action="/registration" enctype="multipart/form-data"> @csrf
 				<span class="contact100-form-title">
 					Registration Form
 				</span>
@@ -26,7 +26,7 @@
 		        @endif
 
 				<div class="wrap-input100 validate-input" data-validate="Name is required">
-					<input class="input100" id="name" type="text" name="name" placeholder="Name" pattern="[A-Za-z]{1,100}" title="Only use letters">
+					<input class="input100" id="name" type="text" name="name" placeholder="Name" pattern="[A-Za-z ]{1,100}" title="Only use letters">
 					<label class="label-input100" for="name">
 						<span class="fa fa-user"></span>
 					</label>
@@ -51,7 +51,7 @@
 				</div>
 
 				<div class="wrap-input100 validate-input" data-validate = "Photo is required">
-					<input class="input10" id="photo" type="file" name="photo" {{-- accept="image/.jpg, .jpeg" --}}>
+					<input class="input10" id="photo" type="file" name="photo">
 					<label class="label-input100" for="phone">
 						<span class="fa fa-photo"></span>
 					</label>
@@ -88,7 +88,7 @@
 						<td>{{$registration['photo']}}
 						</td>
 						<td>
-	                    	<a class="btn btn-info btn-sm" href="">Edit</a>
+	                    	<a class="btn btn-info btn-sm" href="{{action('registrationController@edit', $registration['id'])}}">Edit</a>
 	                    	<form class="delete" action="{{ url('delete',$registration->id) }}" method="POST">
 						        <input type="hidden" name="_method" value="DELETE">
 						        <input type="hidden" name="_token" value="{{ csrf_token() }}" />

@@ -43,7 +43,7 @@ class registrationController extends Controller
             $file = $request->file('photo');
             $name=time().$file->getClientOriginalName();
 
-            $fileName = "-600x600" . $name;
+            $fileName = $name . "-600x600.jpg" ;
             Image::make($file)->resize(600, 600);
             $file->move(public_path().'/images/', $fileName);
 
@@ -93,7 +93,12 @@ class registrationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $registration= \App\Registration::find($id);
+        $registration->name=$request->get('name');
+        $registration->address=$request->get('address');
+        $registration->email=$request->get('email');
+        $registration->save();
+        return redirect('')->with('success','Information has been edited');;
     }
 
     /**

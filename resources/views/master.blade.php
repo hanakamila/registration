@@ -29,11 +29,7 @@
 </head>
 <body>
 
-
-	
 		@yield('content')
-
-
 
 	<div id="dropDownSelect1"></div>
 
