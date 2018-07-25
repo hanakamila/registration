@@ -1,5 +1,9 @@
 <?php
 
+use App\Registration;
+use App\Http\Resources\Regist as RegistResource;
+
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,3 +21,6 @@
 
 Route::get('/', 'registrationController@index');
 Route::resource('registration', 'registrationController');
+Route::get('/regist', function () {
+    return new RegistResource(Registration::find(1));
+});
